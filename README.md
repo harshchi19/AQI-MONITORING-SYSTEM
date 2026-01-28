@@ -106,17 +106,23 @@ AQI-MONITORING-SYSTEM/
    
    Create a `.env` file in the backend directory:
    ```env
-   SECRET_KEY=your-secret-key-here
+   # Generate a secure secret key using:
+   # python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+   SECRET_KEY=your-generated-secret-key-here
+   
+   # SECURITY WARNING: Don't run with DEBUG=True in production!
    DEBUG=True
+   
    DATABASE_URL=sqlite:///db.sqlite3
    REDIS_URL=redis://localhost:6379
    ```
 
-5. **Run migrations**
+5. **Run database migrations**
    ```bash
-   python manage.py makemigrations
    python manage.py migrate
    ```
+   
+   Note: Only run `python manage.py makemigrations` if you're modifying models or need to create new migrations.
 
 6. **Create superuser (optional)**
    ```bash
@@ -272,7 +278,7 @@ npm run build
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is available for use and modification. Please check with the repository owner for specific licensing terms.
 
 ## Support
 
